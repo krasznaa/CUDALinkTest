@@ -43,6 +43,8 @@ target_include_directories( MultiplyLib PUBLIC
 add_executable( testComplexLink main.cxx )
 target_link_libraries( testComplexLink PRIVATE
    MultiplyLib HelperLib )
+set_property( TARGET testComplexLink PROPERTY INSTALL_RPATH
+   "\$ORIGIN/../${CMAKE_INSTALL_LIBDIR}" )
 
 # Build the test executable using just the static library.
 add_executable( testSimpleLink main.cxx
