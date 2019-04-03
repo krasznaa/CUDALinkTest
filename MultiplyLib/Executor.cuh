@@ -80,7 +80,7 @@ void execute( HelperClass& helper, NAMES... names ) {
 
    // Execute the kernel.
    const int nThreadsPerBlock = 256;
-   const std::size_t n = helper.size();
+   const int n = static_cast< int >( helper.size() );
    const int nBlocks = ( n + nThreadsPerBlock - 1 ) / nThreadsPerBlock;
    auto arrays = helper.arrays();
    deviceExecute< FUNCTOR ><<< nBlocks, nThreadsPerBlock, 0, stream >>>(

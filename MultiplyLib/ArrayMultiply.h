@@ -6,6 +6,13 @@
 class HelperClass;
 
 /// Function multiplying array with index 0 in the helper object
-void arrayMultiply( HelperClass& helper );
+#if defined(_WIN32) || defined(_WIN64)
+__declspec(dllexport)
+#endif
+void
+#if defined(_WIN32) || defined(_WIN64)
+__cdecl
+#endif
+arrayMultiply( HelperClass& helper );
 
 #endif // TEST11_ARRAYMULTIPLY_H

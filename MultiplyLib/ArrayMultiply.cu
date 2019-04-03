@@ -18,7 +18,14 @@ namespace {
 
 } // private namespace
 
-void arrayMultiply( HelperClass& helper ) {
+#if defined(_WIN32) || defined(_WIN64)
+__declspec(dllexport)
+#endif
+void
+#if defined(_WIN32) || defined(_WIN64)
+__cdecl
+#endif
+arrayMultiply( HelperClass& helper ) {
 
    execute< ::ArrayMultiplier >( helper, "0" );
    return;

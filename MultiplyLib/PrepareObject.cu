@@ -3,7 +3,14 @@
 // Local include(s).
 #include "HelperClass.cuh"
 
-HelperClass* prepareObject() {
+#if defined(_WIN32) || defined(_WIN64)
+__declspec(dllexport)
+#endif
+HelperClass*
+#if defined(_WIN32) || defined(_WIN64)
+__cdecl
+#endif
+prepareObject() {
 
    // Construct the helper object.
    static const std::size_t SIZE = 10;

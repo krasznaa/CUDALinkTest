@@ -103,7 +103,7 @@ void HelperClass::makeArray( std::size_t id ) {
    CUDA_CHECK( cudaMallocManaged( &( m_arrays[ id ] ),
                                   m_csize * sizeof( float ) ) );
    // Make sure it's initialised to zero.
-   bzero( m_arrays[ id ], m_csize * sizeof( float ) );
+   std::memset( m_arrays[ id ], 0, m_csize );
    return;
 }
 
